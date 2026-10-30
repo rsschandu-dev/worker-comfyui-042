@@ -49,10 +49,10 @@ RUN set -eu; \
 
 COPY verify_nodes.py /tmp/verify_nodes.py
 
+WORKDIR /comfyui
+
 # Fail the build here, not on a live worker, if the node graph cannot import or
 # the Qwen 2.1 nodes are missing. This check is the entire point of the image.
 RUN python /tmp/verify_nodes.py
-
-WORKDIR /comfyui
 
 # start.sh, handler.py and the runpod entrypoint are inherited from the base.
